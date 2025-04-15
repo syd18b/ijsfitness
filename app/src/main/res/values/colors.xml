@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="orange">#FF9800</color>
+    <color name="magenta">#C0099C</color>
     <color name="red200">#E91E63</color>
-    <color name="purple_700">#9902B3</color>
     <color name="yellow">#FFEB3B</color>
     <color name="yellow200">#FFC107</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="magentaLight">#C400E5</color>
-    <color name="background">#FBF1A4</color>
+    <color name="magentaLight">#EC22C6</color>
+    <color name="background">#FFF8C5</color>
     <color name="magentaDark">#4B0957</color>
 </resources>

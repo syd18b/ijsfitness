@@ -69,24 +69,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_login, menu);
+        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int menuId = item.getItemId();
-        if (menuId == R.id.menu_info) {
-            Button button = findViewById(R.id.button_login);
-            Snackbar.make(button,
-                    R.string.app_info,
-                    Snackbar.LENGTH_LONG).show();
-            return true;
-        } else if (menuId == R.id.menu_register) {
-            Intent registerIntent = new Intent(this, RegisterActivity.class);
-            startActivity(registerIntent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    
 }

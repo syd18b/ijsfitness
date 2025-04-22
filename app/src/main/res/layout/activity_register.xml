@@ -103,13 +103,13 @@
     android:layout_marginTop="16dp" />
 
   <Spinner
-    android:id="@+id/editAge"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="@+id/age_label"
-    app:layout_constraintStart_toEndOf="@+id/age_label"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginEnd="16dp" />
+      android:id="@+id/editAge"
+      android:layout_width="336dp"
+      android:layout_height="30dp"
+      android:layout_marginEnd="16dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@+id/age_label"
+      app:layout_constraintTop_toTopOf="@+id/age_label" />
 
   <Button
     android:id="@+id/button_register"

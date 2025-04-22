@@ -122,6 +122,7 @@
     android:layout_marginTop="32dp"
     android:layout_marginStart="32dp" />
 
+
   <Button
     android:id="@+id/button_cancel_registration"
     android:layout_width="wrap_content"
@@ -131,5 +132,15 @@
     app:layout_constraintTop_toTopOf="@+id/button_register"
     app:layout_constraintStart_toEndOf="@+id/button_register"
     android:layout_marginStart="16dp" />
+
+    <Spinner
+        android:id="@+id/spinner_college"
+        android:layout_width="208dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/college_label"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+        app:layout_constraintTop_toTopOf="@+id/college_label" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

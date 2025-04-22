@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
   android:layout_height="match_parent"
+    android:background="@color/background"
   android:orientation="vertical"
   android:padding="16dp">
 
@@ -20,7 +21,9 @@
       android:layout_width="376dp"
       android:layout_height="61dp"
       android:hint="Target Muscle Group (e.g., Legs, Arms)"
+
       android:inputType="text" />
+
 
   <!-- EditText for Time Frame -->
   <EditText

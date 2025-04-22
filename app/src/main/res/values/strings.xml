@@ -10,8 +10,10 @@
     <string name="password_label">Password:</string>
     <string name="login_button">LogIn</string>
     <string name="register_button">Register</string>
+  <string name="password_hint">Enter your password</string>
 
-    <string name="email_hint">abc123@psu.edu</string>
+
+  <string name="email_hint">abc123@psu.edu</string>
     <string name="last_name_hint">Last Name</string>
     <string name="first_name_hint">First Name</string>
 

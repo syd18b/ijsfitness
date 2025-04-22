@@ -6,32 +6,32 @@
   android:padding="16dp">
 
   <EditText
-    android:id="@+id/editExercise"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Exercise name"
-    android:inputType="text" />
+      android:id="@+id/editExercise"
+      android:layout_width="380dp"
+      android:layout_height="58dp"
+      android:hint="Exercise name"
+      android:inputType="text" />
 
   <EditText
-    android:id="@+id/editWeight"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Weight lifted"
-    android:inputType="number" />
+      android:id="@+id/editWeight"
+      android:layout_width="379dp"
+      android:layout_height="60dp"
+      android:hint="Weight lifted"
+      android:inputType="number" />
 
   <EditText
-    android:id="@+id/editReps"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Reps or Sets"
-    android:inputType="number" />
+      android:id="@+id/editReps"
+      android:layout_width="379dp"
+      android:layout_height="56dp"
+      android:hint="Reps or Sets"
+      android:inputType="number" />
 
   <EditText
-    android:id="@+id/editSteps"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Steps taken today (optional)"
-    android:inputType="number" />
+      android:id="@+id/editSteps"
+      android:layout_width="380dp"
+      android:layout_height="56dp"
+      android:hint="Steps taken today (optional)"
+      android:inputType="number" />
 
   <Button
     android:id="@+id/btnSaveProgress"

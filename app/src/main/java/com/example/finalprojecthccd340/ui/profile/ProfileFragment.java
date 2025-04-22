@@ -1,4 +1,4 @@
-package com.example.finalprojecthccd340.ui.notifications;
+package com.example.finalprojecthccd340.ui.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.finalprojecthccd340.databinding.FragmentNotificationsBinding;
 
-public class NotificationsFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
 

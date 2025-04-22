@@ -4,6 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="age_label">Age:</string>
+
     <string name="email_label">Email:</string>
     <string name="password_label">Password:</string>
     <string name="login_button">LogIn</string>

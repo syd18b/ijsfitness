@@ -74,16 +74,16 @@
         app:layout_constraintHorizontal_bias="0.438"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.198" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="241dp"
         android:layout_height="237dp"
-        android:layout_marginBottom="324dp"
+        android:layout_marginBottom="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintHorizontal_bias="0.394"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ijslogo" />
+        app:srcCompat="@drawable/ijsogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

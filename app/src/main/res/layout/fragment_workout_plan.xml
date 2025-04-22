@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical"
   android:padding="16dp">
@@ -30,6 +31,12 @@
     android:inputType="text" />
 
   <!-- Button to Save the Workout Plan -->
+  <ImageView
+      android:id="@+id/imageView2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/hcddpic2" />
+
   <Button
     android:id="@+id/btnSaveWorkoutPlan"
     android:layout_width="match_parent"

@@ -4,49 +4,43 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
+import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 public class WorkoutPlanFragment extends Fragment {
 
-  private EditText editGoal, editTimeFrame;
-  private Button btnSaveGoal;
+  // Declare EditText variables
+  private EditText editGoal, editTargetMuscle, editTimeFrame;
+  private Button btnSaveWorkoutPlan;
 
   public WorkoutPlanFragment() {
     // Required empty public constructor
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     // Inflate the fragment layout
     View rootView = inflater.inflate(R.layout.fragment_workout_plan, container, false);
 
-    // Initialize views
-    editGoal = rootView.findViewById(R.id.editGoal);
-    editTimeFrame = rootView.findViewById(R.id.editTimeFrame);
-    btnSaveGoal = rootView.findViewById(R.id.btnSaveGoal);
+    // Initialize the EditText views from the layout using findViewById
+    editGoal = rootView.findViewById(R.id.editWorkoutGoal); // Correct ID from XML
+    editTargetMuscle = rootView.findViewById(R.id.editTargetMuscle); // Correct ID from XML
+    editTimeFrame = rootView.findViewById(R.id.editTimeFrame); // Correct ID from XML
+    btnSaveWorkoutPlan = rootView.findViewById(R.id.btnSaveWorkoutPlan); // Correct ID from XML
 
-    // Set button click listener
-    btnSaveGoal.setOnClickListener(v -> saveWorkoutGoal());
+    // Set up the button to save the workout plan
+    btnSaveWorkoutPlan.setOnClickListener(v -> saveWorkoutPlan());
 
     return rootView;
   }
 
-  // Method to save the workout goal
-  private void saveWorkoutGoal() {
-    String goal = editGoal.getText().toString();
+  private void saveWorkoutPlan() {
+    // Get the text from the EditText fields
+    String workoutGoal = editGoal.getText().toString();
+    String targetMuscle = editTargetMuscle.getText().toString();
     String timeFrame = editTimeFrame.getText().toString();
 
-    // Simple validation
-    if (goal.isEmpty()) {
-      Toast.makeText(getActivity(), "Please enter a workout goal.", Toast.LENGTH_SHORT).show();
-    } else {
-      // Save logic (e.g., save to database or SharedPreferences)
-      Toast.makeText(getActivity(), "Goal saved: " + goal, Toast.LENGTH_SHORT).show();
-    }
+    // You can now use the data (e.g., save it to a database, or display a message)
   }
 }

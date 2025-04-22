@@ -25,14 +25,14 @@ public class LogProgressFragment extends Fragment {
     // Inflate the fragment layout
     View rootView = inflater.inflate(R.layout.fragment_log_progress, container, false);
 
-    // Initialize views
+    // Initialize the views by finding them from the inflated root view
     editExercise = rootView.findViewById(R.id.editExercise);
     editWeight = rootView.findViewById(R.id.editWeight);
     editReps = rootView.findViewById(R.id.editReps);
     editSteps = rootView.findViewById(R.id.editSteps);
     btnSaveProgress = rootView.findViewById(R.id.btnSaveProgress);
 
-    // Set button click listener
+    // Set the button click listener to save the progress
     btnSaveProgress.setOnClickListener(v -> saveProgress());
 
     return rootView;
@@ -45,7 +45,7 @@ public class LogProgressFragment extends Fragment {
     String reps = editReps.getText().toString();
     String steps = editSteps.getText().toString();
 
-    // Simple validation
+    // Simple validation to ensure all required fields are filled in
     if (exercise.isEmpty() || weight.isEmpty() || reps.isEmpty()) {
       Toast.makeText(getActivity(), "Please fill in all fields.", Toast.LENGTH_SHORT).show();
     } else {

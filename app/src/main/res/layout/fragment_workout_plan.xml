@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp">
+
+  <!-- EditText for Workout Goal -->
+  <EditText
+    android:id="@+id/editWorkoutGoal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Workout Goal (e.g., Lose Weight, Build Muscle)"
+    android:inputType="text" />
+
+  <!-- EditText for Target Muscle Group -->
+  <EditText
+    android:id="@+id/editTargetMuscle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Target Muscle Group (e.g., Legs, Arms)"
+    android:inputType="text" />
+
+  <!-- EditText for Time Frame -->
+  <EditText
+    android:id="@+id/editTimeFrame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Time Frame (e.g., 30 days)"
+    android:inputType="text" />
+
+  <!-- Button to Save the Workout Plan -->
+  <Button
+    android:id="@+id/btnSaveWorkoutPlan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Save Workout Plan" />
+</LinearLayout>

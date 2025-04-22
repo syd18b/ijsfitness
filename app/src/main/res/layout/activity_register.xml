@@ -130,8 +130,8 @@
 
     <Spinner
         android:id="@+id/spinner_college"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="208dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/college_label"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword"

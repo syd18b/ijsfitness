@@ -6,6 +6,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +42,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     cancelButton.setOnClickListener(this);
 
     sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+
+    Spinner ageSpinner = findViewById(R.id.editAge);
+    List<String> ageOptions = new ArrayList<>();
+    for (int i = 10; i <= 100; i++) {
+      ageOptions.add(String.valueOf(i));
+    }
+    ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ageOptions);
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    ageSpinner.setAdapter(adapter);
+
   }
 
   @Override
@@ -71,7 +87,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     String password = getInputFromEditText(R.id.editTextPassword);
     String firstName = getInputFromEditText(R.id.editFirstName);
     String lastName = getInputFromEditText(R.id.editLastName);
-    String ageStr = getInputFromEditText(R.id.editAge); // Get age input
+    Spinner ageSpinner = findViewById(R.id.editAge);
+    String ageStr = ageSpinner.getSelectedItem().toString();
+// Get age input
 
     if (email.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || ageStr.isEmpty()) {
       Snackbar.make(findViewById(R.id.button_register),

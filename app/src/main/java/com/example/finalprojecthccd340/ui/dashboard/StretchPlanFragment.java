@@ -1,4 +1,4 @@
-package com.example.finalprojecthccd340.ui.stretchplan;
+package com.example.finalprojecthccd340.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

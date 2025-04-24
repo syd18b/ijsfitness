@@ -1,0 +1,41 @@
+<!-- res/layout/fragment_edit_profile.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="16dp">
+
+  <EditText
+    android:id="@+id/editName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter Full Name"
+    android:layout_marginBottom="8dp"/>
+
+  <EditText
+    android:id="@+id/editAge"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter Age"
+    android:layout_marginBottom="8dp"/>
+
+  <EditText
+    android:id="@+id/editHeight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter Height (cm)"
+    android:layout_marginBottom="8dp"/>
+
+  <EditText
+    android:id="@+id/editWeight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter Weight (kg)"
+    android:layout_marginBottom="16dp"/>
+
+  <Button
+    android:id="@+id/saveButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Save Profile" />
+</LinearLayout>

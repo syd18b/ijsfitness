@@ -1,23 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="16dp">
+
+  <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".ui.profile.ProfileFragment">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <!-- Profile Image -->
+    <ImageView
+      android:id="@+id/profileImage"
+      android:layout_width="120dp"
+      android:layout_height="120dp"
+      android:src="@drawable/ic_default_profile"
+      android:scaleType="centerCrop"
+      android:layout_marginBottom="16dp"
+      android:background="@drawable/profile_circle_background"
+      android:clickable="true"
+      android:focusable="true"
+      android:contentDescription="Profile picture" />
+
+    <!-- User Info Fields -->
+    <TextView
+      android:id="@+id/profileName"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Full Name"
+      android:textSize="18sp"
+      android:textStyle="bold"
+      android:layout_marginBottom="8dp" />
 
     <TextView
-        android:id="@+id/text_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+      android:id="@+id/profileAge"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Age: 21"
+      android:layout_marginBottom="16dp" />
+
+    <TextView
+      android:id="@+id/profileHeight"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Height: 170 cm"
+      android:layout_marginBottom="8dp" />
+
+    <TextView
+      android:id="@+id/profileWeight"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Weight: 70 kg"
+      android:layout_marginBottom="16dp" />
+
+    <!-- Toggle for Edit Mode -->
+    <Switch
+      android:id="@+id/editProfileToggle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Edit Profile"
+      android:layout_marginBottom="16dp" />
+
+    <!-- EditText fields for name, age, height, and weight (hidden initially) -->
+    <EditText
+      android:id="@+id/editProfileName"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Enter Full Name"
+      android:visibility="gone"
+      android:layout_marginBottom="8dp" />
+
+    <EditText
+      android:id="@+id/editProfileAge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Enter Age"
+      android:visibility="gone"
+      android:layout_marginBottom="8dp" />
+
+    <EditText
+      android:id="@+id/editProfileHeight"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Enter Height (cm)"
+      android:visibility="gone"
+      android:layout_marginBottom="8dp" />
+
+    <EditText
+      android:id="@+id/editProfileWeight"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Enter Weight (kg)"
+      android:visibility="gone"
+      android:layout_marginBottom="8dp" />
+
+  </LinearLayout>
+</ScrollView>

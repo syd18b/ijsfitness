@@ -10,6 +10,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.finalprojecthccd340.R;
 import com.example.finalprojecthccd340.databinding.FragmentEditProfileBinding;
 
 public class EditProfileFragment extends Fragment {

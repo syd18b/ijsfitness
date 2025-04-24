@@ -4,6 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_profile">Profile</string>
 
+
     <string name="age_label">Age:</string>
 
     <string name="email_label">Email:</string>
@@ -17,6 +18,7 @@
     <string name="last_name_hint">Last Name</string>
     <string name="first_name_hint">First Name</string>
 
+    <string name="in_ist_switch_label">I am 18 years or older</string>
     <string name="menu_info">Info</string>
     <string name="menu_register">Register</string>
     <string name="menu_login">Log In</string>

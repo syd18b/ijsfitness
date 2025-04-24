@@ -1,4 +1,4 @@
-package com.example.finalprojecthccd340.ui.stretchplan;
+package com.example.finalprojecthccd340.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,8 +42,8 @@ public class StretchPlanFragment extends Fragment {
     stretchOptionsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
     // Set the adapter to the RecyclerView
-    StretchOptionsAdapter adapter = new StretchOptionsAdapter(stretchOptions, getContext());
-    stretchOptionsRecyclerView.setAdapter(adapter);
+     StretchOptionsAdapter adapter = new StretchOptionsAdapter(stretchOptions, getContext());
+     stretchOptionsRecyclerView.setAdapter(adapter);
 
     return root;
   }

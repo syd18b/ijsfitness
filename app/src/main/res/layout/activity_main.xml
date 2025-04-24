@@ -34,12 +34,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation"/>
 
-    <activity
-        android:name=".RegisterActivity"
-        android:exported="true" />
 
-    <activity
-        android:name=".LoginActivity"
-        android:exported="true" />
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -150,7 +150,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     int id = item.getItemId();
 
     if (id == R.id.action_login) {
-      startActivity(new Intent(this, RegisterActivity.class));
+      startActivity(new Intent(this, LoginActivity.class));
       return true;
     }
 

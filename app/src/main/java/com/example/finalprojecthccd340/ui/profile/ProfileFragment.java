@@ -1,34 +1,26 @@
 package com.example.finalprojecthccd340.ui.profile;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
-import com.example.finalprojecthccd340.R;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.finalprojecthccd340.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
 
   private FragmentProfileBinding binding;
-  private ImageView profileImage;
-  private TextView profileName, profileAge, profileHeight, profileWeight;
-  private EditText editProfileName, editProfileAge, editProfileHeight, editProfileWeight;
-  private Switch editProfileToggle;
 
-  private static final int PICK_IMAGE_REQUEST = 1;
+  // Declare EditText fields for user input
+  private EditText editProfileName, editProfileAge, editProfileHeight, editProfileWeight;
+  private TextView profileName, profileAge, profileHeight, profileWeight;
+  private Switch editProfileToggle;
 
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +28,6 @@ public class ProfileFragment extends Fragment {
     View root = binding.getRoot();
 
     // Initialize views
-    profileImage = binding.profileImage;
     profileName = binding.profileName;
     profileAge = binding.profileAge;
     profileHeight = binding.profileHeight;
@@ -48,14 +39,20 @@ public class ProfileFragment extends Fragment {
     editProfileWeight = binding.editProfileWeight;
     editProfileToggle = binding.editProfileToggle;
 
-    // Set initial values (these would come from your ViewModel or data)
+    // Set initial values (this would come from your data or ViewModel)
     profileName.setText("John Doe");
     profileAge.setText("Age: 24");
-    profileHeight.setText("Height: 170 cm");
-    profileWeight.setText("Weight: 70 kg");
 
-    // Set the default profile image (placeholder)
-    profileImage.setImageResource(R.drawable.ic_default_profile);
+    // Convert height from cm to feet and inches
+    int cm = 170;
+    int feet = cm / 30;  // 1 foot = 30.48 cm
+    int inches = (int)((cm % 30) / 2.54);  // remaining inches
+    profileHeight.setText("Height: " + feet + " ft " + inches + " in");
+
+    // Convert weight from kg to pounds
+    double kg = 70;
+    double pounds = kg * 2.20462;
+    profileWeight.setText("Weight: " + String.format("%.1f", pounds) + " lbs");
 
     // Handle toggle for switching between edit and view mode
     editProfileToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -65,7 +62,6 @@ public class ProfileFragment extends Fragment {
         profileAge.setVisibility(View.GONE);
         profileHeight.setVisibility(View.GONE);
         profileWeight.setVisibility(View.GONE);
-        profileImage.setVisibility(View.GONE);
 
         editProfileName.setVisibility(View.VISIBLE);
         editProfileAge.setVisibility(View.VISIBLE);
@@ -77,14 +73,12 @@ public class ProfileFragment extends Fragment {
         editProfileAge.setText("24");
         editProfileHeight.setText("170");
         editProfileWeight.setText("70");
-
       } else {
         // Switch back to view mode
         profileName.setVisibility(View.VISIBLE);
         profileAge.setVisibility(View.VISIBLE);
         profileHeight.setVisibility(View.VISIBLE);
         profileWeight.setVisibility(View.VISIBLE);
-        profileImage.setVisibility(View.VISIBLE);
 
         editProfileName.setVisibility(View.GONE);
         editProfileAge.setVisibility(View.GONE);
@@ -97,43 +91,24 @@ public class ProfileFragment extends Fragment {
         String updatedHeight = editProfileHeight.getText().toString();
         String updatedWeight = editProfileWeight.getText().toString();
 
+        // Convert height from cm to feet and inches
+        int newCm = Integer.parseInt(updatedHeight);
+        int newFeet = newCm / 30;
+        int newInches = (int)((newCm % 30) / 2.54);
+        profileHeight.setText("Height: " + newFeet + " ft " + newInches + " in");
+
+        // Convert weight from kg to pounds
+        double newKg = Double.parseDouble(updatedWeight);
+        double newPounds = newKg * 2.20462;
+        profileWeight.setText("Weight: " + String.format("%.1f", newPounds) + " lbs");
+
         // Update the TextViews with new values
         profileName.setText(updatedName);
         profileAge.setText("Age: " + updatedAge);
-        profileHeight.setText("Height: " + updatedHeight + " cm");
-        profileWeight.setText("Weight: " + updatedWeight + " kg");
       }
     });
 
-    // Profile image click listener to allow image change
-    profileImage.setOnClickListener(v -> openImagePicker());
-
     return root;
-  }
-
-  // Method to open the image picker for changing the profile picture
-  private void openImagePicker() {
-    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-    intent.setType("image/*");
-    startActivityForResult(intent, PICK_IMAGE_REQUEST);
-  }
-
-  // Handle the result of the image picker
-  @Override
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
-
-    if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-      // Get the image URI
-      Bitmap selectedImage = null;
-      try {
-        selectedImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
-        // Set the selected image as the profile picture
-        profileImage.setImageBitmap(selectedImage);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
   }
 
   @Override

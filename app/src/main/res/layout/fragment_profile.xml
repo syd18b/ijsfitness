@@ -43,15 +43,16 @@
       android:id="@+id/profileHeight"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Height: 170 cm"
+      android:text="Height: 5 ft 7 in"
       android:layout_marginBottom="8dp" />
 
     <TextView
       android:id="@+id/profileWeight"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Weight: 70 kg"
+      android:text="Weight: 154.3 lbs"
       android:layout_marginBottom="16dp" />
+
 
     <!-- Toggle for Edit Mode -->
     <Switch

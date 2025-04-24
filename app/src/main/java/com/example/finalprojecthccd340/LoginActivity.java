@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         Button button = findViewById(R.id.button_login);
         button.setOnClickListener(this);
-        
+
 
         sharedPreferences = getSharedPreferences(RegisterActivity.SHARED_PREF_NAME, MODE_PRIVATE);
     }

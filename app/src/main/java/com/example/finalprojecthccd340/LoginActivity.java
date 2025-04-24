@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
+        getMenuInflater().inflate(R.menu.login_register_menu, menu);
         return true;
     }
 

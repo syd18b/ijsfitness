@@ -34,4 +34,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation"/>
 
+    <activity
+        android:name=".RegisterActivity"
+        android:exported="true" />
+
+    <activity
+        android:name=".LoginActivity"
+        android:exported="true" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.finalprojecthccd340.ui.stretchplan;
+package com.example.finalprojecthccd340.ui.stretch;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,21 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalprojecthccd340.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StretchOptionsAdapter extends RecyclerView.Adapter<StretchOptionsAdapter.ViewHolder> {
 
-  private ArrayList<String> stretchOptions;
+  private List<String> stretchOptions;  // Change to List<String> for more flexibility
   private Context context;
 
-  public StretchOptionsAdapter(ArrayList<String> stretchOptions, Context context) {
-    this.stretchOptions = stretchOptions;
+  public StretchOptionsAdapter(List<String> stretchOptions, Context context) {
+    this.stretchOptions = new ArrayList<>(stretchOptions);  // Convert List to ArrayList internally
     this.context = context;
   }
 
   @NonNull
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(context).inflate(R.layout.item_stretch_option, parent, false);
+    View view = LayoutInflater.from(context).inflate(R.layout.item_stretch_options, parent, false);
     return new ViewHolder(view);
   }
 

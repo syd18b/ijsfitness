@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalprojecthccd340.R;
+import com.example.finalprojecthccd340.ui.stretch.StretchOptionsAdapter;  // Ensure this import is added
 
 import java.util.ArrayList;
 

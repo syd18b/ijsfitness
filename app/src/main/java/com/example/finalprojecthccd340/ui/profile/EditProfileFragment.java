@@ -4,59 +4,61 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Button;
-
-import androidx.annotation.NonNull;
+import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 
 import com.example.finalprojecthccd340.R;
 import com.example.finalprojecthccd340.databinding.FragmentEditProfileBinding;
+import androidx.fragment.app.FragmentTransaction;
 
 public class EditProfileFragment extends Fragment {
 
-  private FragmentEditProfileBinding binding;
+  private EditText editName, editAge, editHeight, editWeight;
+  private Button saveButton;
 
-  public View onCreateView(@NonNull LayoutInflater inflater,
-                           ViewGroup container, Bundle savedInstanceState) {
-    // Inflate the layout using ViewBinding
-    binding = FragmentEditProfileBinding.inflate(inflater, container, false);
-    View root = binding.getRoot();
-
-    // Initialize views from the binding object
-    EditText editName = binding.editName;
-    EditText editAge = binding.editAge;
-    EditText editHeight = binding.editHeight;
-    EditText editWeight = binding.editWeight;
-    Button saveButton = binding.saveButton;
-
-    // Set initial values (these could come from a ViewModel or data source)
-    editName.setText("John Doe");
-    editAge.setText("24");
-    editHeight.setText("170");
-    editWeight.setText("70");
-
-    // Save the changes when the user clicks the Save button
-    saveButton.setOnClickListener(v -> {
-      String updatedName = editName.getText().toString();
-      String updatedAge = editAge.getText().toString();
-      String updatedHeight = editHeight.getText().toString();
-      String updatedWeight = editWeight.getText().toString();
-
-      // You can handle saving the data to a ViewModel, SharedPreferences, or Database here
-
-      // Return to the ProfileFragment with updated information
-      getActivity().getSupportFragmentManager().beginTransaction()
-        .replace(R.id.fragment_container, new ProfileFragment()) // Assuming fragment_container is the container in your activity
-        .commit();
-    });
-
-    return root;
+  public EditProfileFragment() {
+    // Required empty public constructor
   }
 
   @Override
-  public void onDestroyView() {
-    super.onDestroyView();
-    binding = null;
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
+    // Inflate the layout for this fragment
+    View rootView = inflater.inflate(R.layout.fragment_edit_profile, container, false);
+
+    // Initialize views
+    editName = rootView.findViewById(R.id.editName);
+    editAge = rootView.findViewById(R.id.editAge);
+    editHeight = rootView.findViewById(R.id.editHeight);
+    editWeight = rootView.findViewById(R.id.editWeight);
+    saveButton = rootView.findViewById(R.id.saveButton);
+
+    // Set up button click listener
+    saveButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        saveProfile();
+      }
+    });
+
+    return rootView;
+  }
+
+  // Method to handle saving profile and replacing fragment
+  private void saveProfile() {
+    // Get the profile data from the EditText fields
+    String name = editName.getText().toString();
+    String age = editAge.getText().toString();
+    String height = editHeight.getText().toString();
+    String weight = editWeight.getText().toString();
+
+    // Perform any necessary validation or save the data to your model here
+
+    // Now, replace this fragment with the ProfileFragment
+    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+    transaction.replace(R.id.fragment_container, new ProfileFragment()); // Replace with ProfileFragment
+    transaction.addToBackStack(null); // Optional: Add to back stack
+    transaction.commit();
   }
 }

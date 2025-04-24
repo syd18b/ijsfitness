@@ -1,8 +1,11 @@
 package com.example.finalprojecthccd340;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -98,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
       return;
     }
 
-    // Validate age
+
     int age = -1;
     try {
       age = Integer.parseInt(ageStr);
@@ -122,10 +125,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     saveUserInformation(email, password, firstName, lastName, age);
   }
 
-  /**
-   * Saves user information using SharedPreferences
-   *
-   */
   void saveUserInformation(String email, String password, String firstName,
                            String lastName, int age) {
 
@@ -135,9 +134,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     editor.putString(FIRST_NAME_KEY, firstName);
     editor.putString(LAST_NAME_KEY, lastName);
 
-    editor.putInt(AGE_KEY, age); // Store age as an integer
+    editor.putInt(AGE_KEY, age);
 
     editor.apply();
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.register_menu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    int id = item.getItemId();
+
+    if (id == R.id.action_login) {
+      startActivity(new Intent(this, LoginActivity.class));
+      return true;
+    }
+
+    return super.onOptionsItemSelected(item);
   }
 
 }

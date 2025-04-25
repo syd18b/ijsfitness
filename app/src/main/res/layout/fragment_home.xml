@@ -102,10 +102,10 @@
         android:src="@drawable/fireicon_removebg_preview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.002"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.03" />
 
     <TextView
         android:id="@+id/textView8"
@@ -145,13 +145,19 @@
         android:id="@+id/button2"
         android:layout_width="149dp"
         android:layout_height="58dp"
+        android:background="#82C5D1"
+        android:backgroundTint="#82C5D1"
         android:text="Recent Workout!"
+        android:textColor="#FFFFFF"
+        app:iconTint="#82C5D1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.961"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintVertical_bias="0.514"
+        app:rippleColor="#82C5D1"
+        app:strokeColor="#82C5D1" />
 
     <ImageView
         android:id="@+id/imageView14"
@@ -182,7 +188,7 @@
         android:layout_width="238dp"
         android:layout_height="139dp"
         android:text="“When I feel tired, I just think about how great I will feel once I finally reach my goal.” – Michael Phelps"
-        android:textColor="#C414A9"
+        android:textColor="#82C5D1"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -251,7 +257,7 @@
         android:layout_width="136dp"
         android:layout_height="29dp"
         android:text="- Always Hydrate "
-        android:textColor="#C414A9"
+        android:textColor="#82C5D1"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -265,7 +271,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" -Stretching is important! "
-        android:textColor="#C414A9"
+        android:textColor="#82C5D1"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -279,7 +285,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" -Set realistic goals"
-        android:textColor="#C414A9"
+        android:textColor="#82C5D1"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -293,7 +299,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="- Get plenty of rest"
-        android:textColor="#C414A9"
+        android:textColor="#82C5D1"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

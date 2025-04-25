@@ -11,7 +11,10 @@ import android.widget.Spinner;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.finalprojecthccd340.R;
 import com.example.finalprojecthccd340.databinding.FragmentDashboardBinding;
+
+import org.jetbrains.annotations.Nullable;
 
 public class DashboardFragment extends Fragment {
 
@@ -60,5 +63,7 @@ public class DashboardFragment extends Fragment {
   public void onDestroyView() {
     super.onDestroyView();
     binding = null;
+
   }
+
 }

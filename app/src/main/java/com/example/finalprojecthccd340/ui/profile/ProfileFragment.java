@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.finalprojecthccd340.R;
 import com.example.finalprojecthccd340.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
@@ -22,10 +25,26 @@ public class ProfileFragment extends Fragment {
   private TextView profileName, profileAge, profileHeight, profileWeight;
   private Switch editProfileToggle;
 
+  private Button editProfileButton;
+
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentProfileBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
+
+
+    editProfileButton = root.findViewById(R.id.editProfile);
+
+    editProfileButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        // Launch EditProfileFragment
+        FragmentTransaction transaction = getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction();
+        transaction.replace(R.id.fragment_container, new EditProfileFragment());
+        transaction.addToBackStack(null); // Optional: adds to back stack
+        transaction.commit();
 
     // Initialize views
     profileName = binding.profileName;

@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
   private static final String TAG = "REGISTER_ACTIVITY";
 
-  public static final String SHARED_PREF_NAME = "PENN_STATE_ID";
+  public static final String SHARED_PREF_NAME = "USER_INFO";
   public static final String EMAIL_KEY = "EMAIL";
   public static final String PASSWORD_KEY = "PASSWORD";
   public static final String FIRST_NAME_KEY = "FIRST_NAME";

@@ -1,9 +1,5 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:padding="16dp">
 
-  <LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -19,8 +15,7 @@
       android:layout_marginBottom="16dp"
       android:background="@drawable/profile_circle_background"
       android:clickable="true"
-      android:focusable="true"
-      android:contentDescription="Profile picture" />
+      android:focusable="true" />
 
     <!-- User Info Fields -->
     <TextView
@@ -95,5 +90,10 @@
       android:visibility="gone"
       android:layout_marginBottom="8dp" />
 
-  </LinearLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile" />
+
+</LinearLayout>

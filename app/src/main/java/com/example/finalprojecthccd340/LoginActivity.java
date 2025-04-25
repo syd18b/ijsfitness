@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+
+
         EditText emailEditText = findViewById(R.id.editTextEmail);
         String email = emailEditText.getText().toString();
 
@@ -45,6 +47,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         /** toy example — DO NOT do this in production code! **/
         String userAllowed = retrieveSavedEmail();
         String correctPassword = retrieveSavedPassword();
+
+        Log.d(TAG, "Retrieved Email: " + userAllowed);
+        Log.d(TAG, "Retrieved Password: " + correctPassword);
+
+
+
         if (email.equals(userAllowed) &&
                 password.equals(correctPassword)) {
             Button button = findViewById(R.id.button_login);
@@ -62,6 +70,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             d.setPositiveButton(android.R.string.ok, null);
             d.show();
         }
+
+
     }
 
     private String retrieveSavedEmail() {

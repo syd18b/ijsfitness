@@ -1,15 +1,27 @@
 package com.example.finalprojecthccd340.ui.profile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finalprojecthccd340.R;
+import com.example.finalprojecthccd340.Workout;
+import com.example.finalprojecthccd340.WorkoutAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.example.finalprojecthccd340.databinding.FragmentProfileBinding;
 
@@ -17,96 +29,76 @@ public class ProfileFragment extends Fragment {
 
   private FragmentProfileBinding binding;
 
-  // Declare EditText fields for user input
-  private EditText editProfileName, editProfileAge, editProfileHeight, editProfileWeight;
-  private TextView profileName, profileAge, profileHeight, profileWeight;
-  private Switch editProfileToggle;
+  private ImageView profileImage;
+  private TextView profileName, profileEmail, profileAge, profileHeight, profileWeight;
+  private Button editProfileButton;
 
-  public View onCreateView(@NonNull LayoutInflater inflater,
-                           ViewGroup container, Bundle savedInstanceState) {
+  private SharedPreferences prefs;
+  private RecyclerView rvWorkoutHistory;
+  private WorkoutAdapter workoutAdapter;
+  private List<Workout> workoutList = new ArrayList<>();
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentProfileBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-    // Initialize views
+    // Initialize SharedPreferences
+    prefs = requireContext().getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
+
+    // Bind views
+    profileImage = binding.profileImage;
     profileName = binding.profileName;
+    profileEmail = binding.profileEmail;
     profileAge = binding.profileAge;
     profileHeight = binding.profileHeight;
     profileWeight = binding.profileWeight;
+    editProfileButton = binding.editProfile;
 
-    editProfileName = binding.editProfileName;
-    editProfileAge = binding.editProfileAge;
-    editProfileHeight = binding.editProfileHeight;
-    editProfileWeight = binding.editProfileWeight;
-    editProfileToggle = binding.editProfileToggle;
+    // Load saved data or use defaults
+    String firstName = prefs.getString("FIRST_NAME", "John");
+    String lastName = prefs.getString("LAST_NAME", "Doe");
+    String email = prefs.getString("EMAIL", "john.doe@example.com");
+    int age = prefs.getInt("AGE", 24);
+    String height = prefs.getString("HEIGHT", "");
+    String weight = prefs.getString("WEIGHT", "");
 
-    // Set initial values (this would come from your data or ViewModel)
-    profileName.setText("John Doe");
-    profileAge.setText("Age: 24");
+    // Set values to UI
+    profileImage.setImageResource(R.drawable.ic_default_profile); // default profile icon
+    profileName.setText(firstName + " " + lastName);
+    profileEmail.setText(email);
+    profileAge.setText("Age: " + age);
 
-    // Convert height from cm to feet and inches
-    int cm = 170;
-    int feet = cm / 30;  // 1 foot = 30.48 cm
-    int inches = (int)((cm % 30) / 2.54);  // remaining inches
-    profileHeight.setText("Height: " + feet + " ft " + inches + " in");
+    if (!height.isEmpty()) {
+      profileHeight.setText("Height: " + height);
+    } else {
+      profileHeight.setText("Height: Not set");
+    }
 
-    // Convert weight from kg to pounds
-    double kg = 70;
-    double pounds = kg * 2.20462;
-    profileWeight.setText("Weight: " + String.format("%.1f", pounds) + " lbs");
+    if (!weight.isEmpty()) {
+      profileWeight.setText("Weight: " + weight + " lbs");
+    } else {
+      profileWeight.setText("Weight: Not set");
+    }
 
-    // Handle toggle for switching between edit and view mode
-    editProfileToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
-      if (isChecked) {
-        // Switch to editing mode
-        profileName.setVisibility(View.GONE);
-        profileAge.setVisibility(View.GONE);
-        profileHeight.setVisibility(View.GONE);
-        profileWeight.setVisibility(View.GONE);
-
-        editProfileName.setVisibility(View.VISIBLE);
-        editProfileAge.setVisibility(View.VISIBLE);
-        editProfileHeight.setVisibility(View.VISIBLE);
-        editProfileWeight.setVisibility(View.VISIBLE);
-
-        // Populate the EditText fields with current values
-        editProfileName.setText("John Doe");
-        editProfileAge.setText("24");
-        editProfileHeight.setText("170");
-        editProfileWeight.setText("70");
-      } else {
-        // Switch back to view mode
-        profileName.setVisibility(View.VISIBLE);
-        profileAge.setVisibility(View.VISIBLE);
-        profileHeight.setVisibility(View.VISIBLE);
-        profileWeight.setVisibility(View.VISIBLE);
-
-        editProfileName.setVisibility(View.GONE);
-        editProfileAge.setVisibility(View.GONE);
-        editProfileHeight.setVisibility(View.GONE);
-        editProfileWeight.setVisibility(View.GONE);
-
-        // Save updated values
-        String updatedName = editProfileName.getText().toString();
-        String updatedAge = editProfileAge.getText().toString();
-        String updatedHeight = editProfileHeight.getText().toString();
-        String updatedWeight = editProfileWeight.getText().toString();
-
-        // Convert height from cm to feet and inches
-        int newCm = Integer.parseInt(updatedHeight);
-        int newFeet = newCm / 30;
-        int newInches = (int)((newCm % 30) / 2.54);
-        profileHeight.setText("Height: " + newFeet + " ft " + newInches + " in");
-
-        // Convert weight from kg to pounds
-        double newKg = Double.parseDouble(updatedWeight);
-        double newPounds = newKg * 2.20462;
-        profileWeight.setText("Weight: " + String.format("%.1f", newPounds) + " lbs");
-
-        // Update the TextViews with new values
-        profileName.setText(updatedName);
-        profileAge.setText("Age: " + updatedAge);
-      }
+    // Edit profile button launches EditProfileFragment
+    editProfileButton.setOnClickListener(v -> {
+      FragmentTransaction transaction = getActivity()
+              .getSupportFragmentManager()
+              .beginTransaction();
+      transaction.replace(R.id.fragment_container, new EditProfileFragment());
+      transaction.addToBackStack(null);
+      transaction.commit();
     });
+
+    // Initialize RecyclerView for workout history
+    rvWorkoutHistory = root.findViewById(R.id.rvWorkoutHistory);
+    workoutAdapter = new WorkoutAdapter(workoutList);
+    rvWorkoutHistory.setLayoutManager(new LinearLayoutManager(getActivity()));
+    rvWorkoutHistory.setAdapter(workoutAdapter);
+
+    // Load workout history from SharedPreferences
+    loadWorkoutHistory();
 
     return root;
   }
@@ -115,5 +107,21 @@ public class ProfileFragment extends Fragment {
   public void onDestroyView() {
     super.onDestroyView();
     binding = null;
+  }
+
+  private void loadWorkoutHistory() {
+    SharedPreferences preferences = getActivity().getSharedPreferences("workout_history", Context.MODE_PRIVATE);
+    Map<String, ?> allEntries = preferences.getAll();
+    workoutList.clear();  // Clear current list before adding new items
+
+    for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+      String workoutData = (String) entry.getValue();
+      String[] data = workoutData.split(",");
+      Workout workout = new Workout(data[0], data[1], data[2], data[3]);
+      workoutList.add(workout);
+    }
+
+    // Notify adapter that the data has changed
+    workoutAdapter.notifyDataSetChanged();
   }
 }

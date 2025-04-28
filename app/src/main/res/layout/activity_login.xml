@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/magenta"
         android:titleTextColor="@color/white"
+        android:layout_marginTop="24dp"
         app:title="IJS Fitness"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,12 +85,8 @@ public class ProfileFragment extends Fragment {
 
     // Edit profile button launches EditProfileFragment
     editProfileButton.setOnClickListener(v -> {
-      FragmentTransaction transaction = getActivity()
-              .getSupportFragmentManager()
-              .beginTransaction();
-      transaction.replace(R.id.fragment_container, new EditProfileFragment());
-      transaction.addToBackStack(null);
-      transaction.commit();
+      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+      navController.navigate(R.id.navigation_edit_profile);
     });
 
     // Initialize RecyclerView for workout history

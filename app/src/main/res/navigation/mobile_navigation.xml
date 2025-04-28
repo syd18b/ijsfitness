@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/mobile_navigation"
   app:startDestination="@+id/navigation_home">
+
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
 
   <!-- Home Fragment -->
   <fragment
@@ -19,6 +28,7 @@
     android:label="@string/title_dashboard"
     tools:layout="@layout/fragment_dashboard" />
 
+
   <!-- Profile Fragment -->
   <fragment
     android:id="@+id/navigation_profile"
@@ -27,6 +37,16 @@
     tools:layout="@layout/fragment_profile" />
 
   <!-- Log Progress Fragment -->
+
+
+
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="com.example.finalprojecthccd340.ui.profile.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
+
+
   <fragment
     android:id="@+id/logProgressFragment"
     android:name="com.example.finalprojecthccd340.LogProgressFragment"

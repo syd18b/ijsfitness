@@ -17,6 +17,7 @@ import java.util.List;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -30,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
   public static final String FIRST_NAME_KEY = "FIRST_NAME";
   public static final String LAST_NAME_KEY = "LAST_NAME";
   public static final String AGE_KEY = "AGE";
+  public static final String HEIGHT_KEY = "HEIGHT";
+  public static final String WEIGHT_KEY = "WEIGHT";
 
   private SharedPreferences sharedPreferences;
 
@@ -40,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     Button registerButton = findViewById(R.id.button_register);
     registerButton.setOnClickListener(this);
+
+    Toolbar toolbar = findViewById(R.id.topAppBar);
+    setSupportActionBar(toolbar);
 
     Button cancelButton = findViewById(R.id.button_cancel_registration);
     cancelButton.setOnClickListener(this);
@@ -135,6 +141,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     editor.putString(LAST_NAME_KEY, lastName);
 
     editor.putInt(AGE_KEY, age);
+
+    editor.putString(HEIGHT_KEY, "");
+    editor.putString(WEIGHT_KEY, "");
 
     editor.apply();
   }

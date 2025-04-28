@@ -25,6 +25,7 @@
 
     <activity
       android:name=".MainActivity"
+        android:windowSoftInputMode="adjustResize"
       android:exported="true" />
 
         <activity
@@ -33,7 +34,7 @@
 
       <!-- Add StretchDetailsActivity declaration -->
     <activity
-      android:name=".stretch.StretchDetailsActivity"
+      android:name=".ui.stretch.StretchDetailsActivity"
       android:exported="true" />
 
   </application>

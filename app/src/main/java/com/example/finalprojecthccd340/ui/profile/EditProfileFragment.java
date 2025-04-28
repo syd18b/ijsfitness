@@ -10,11 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.finalprojecthccd340.R;
+import com.google.android.material.snackbar.Snackbar;
 
 public class EditProfileFragment extends Fragment {
 
@@ -81,29 +85,32 @@ public class EditProfileFragment extends Fragment {
       editWeight.setText(savedWeight);
     }
 
+    // Profile image handling can be added here
     ImageView profileImage = rootView.findViewById(R.id.profileImage);
+
     Button changePhotoButton = rootView.findViewById(R.id.changePhotoButton);
 
-    changePhotoButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // Launch intent to pick an image from gallery or camera
-        // You can use ActivityResultLauncher or an Intent with startActivityForResult (deprecated)
-      }
-    });
+    // changePhotoButton.setOnClickListener(v -> {
+      // Launch intent to pick an image from gallery or camera
+    // });
 
-
-    saveButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        saveProfile();
-      }
-    });
+    // saveButton.setOnClickListener(v -> saveProfile());
 
     return rootView;
   }
 
-  // Method to handle saving profile and replacing fragment
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    saveButton.setOnClickListener(v -> {
+      saveProfile();
+      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+      navController.popBackStack();
+      Toast.makeText(requireContext(), "Profile saved successfully!", Toast.LENGTH_SHORT).show();
+    });
+  }
+
   private void saveProfile() {
     // Get the profile data from the EditText fields
     String first = editFirst.getText().toString();
@@ -115,7 +122,6 @@ public class EditProfileFragment extends Fragment {
     String height = editHeight.getText().toString();
     String weight = editWeight.getText().toString();
 
-    // Save updated profile data to SharedPreferences
     SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("USER_INFO", Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = sharedPreferences.edit();
     editor.putString("FIRST_NAME", first);
@@ -130,11 +136,6 @@ public class EditProfileFragment extends Fragment {
     editor.putString("HEIGHT", height);
     editor.putString("WEIGHT", weight);
     editor.apply();
-
-    // Replace this fragment with the ProfileFragment
-    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.fragment_container, new ProfileFragment());
-    transaction.addToBackStack(null);
-    transaction.commit();
   }
 }
+

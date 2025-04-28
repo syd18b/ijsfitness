@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.FinalProjectHCCD340" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.FinalProjectHCCD340" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#CB0FAE</item>
         <item name="colorPrimaryVariant">@color/red200</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/background</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/orange</item>
         <item name="colorSecondaryVariant">@color/magentaDark</item>

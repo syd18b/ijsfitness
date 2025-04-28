@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
             FragmentTransaction transaction = requireActivity()
                     .getSupportFragmentManager()
                     .beginTransaction();
-            transaction.replace(R.id.fragment_container, new DashboardFragment());
+            transaction.replace(R.id.nav_host_fragment, new DashboardFragment());
             transaction.addToBackStack(null); // optional: allows "Back" to go to Home
             transaction.commit();
         };

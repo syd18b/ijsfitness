@@ -1,69 +1,68 @@
 package com.example.finalprojecthccd340.ui.dashboard;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
+import android.widget.Button;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
+import androidx.navigation.Navigation;
 import com.example.finalprojecthccd340.R;
-import com.example.finalprojecthccd340.databinding.FragmentDashboardBinding;
-
-import org.jetbrains.annotations.Nullable;
 
 public class DashboardFragment extends Fragment {
 
-  private FragmentDashboardBinding binding;
-  private String[] bodyParts = {"Arms", "Legs", "Back", "Chest", "Shoulders"};
+  private Button btnWorkoutPlan;
+  private Button btnStretchPlan;
 
   @Override
   public View onCreateView(@NonNull LayoutInflater inflater,
                            ViewGroup container, Bundle savedInstanceState) {
-    binding = FragmentDashboardBinding.inflate(inflater, container, false);
-    View root = binding.getRoot();
+    View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-    // Set up Spinner
-    ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
-      android.R.layout.simple_spinner_dropdown_item, bodyParts);
-    binding.spinnerBodyParts.setAdapter(adapter);
+    btnWorkoutPlan = root.findViewById(R.id.btnWorkoutPlan);
+    btnStretchPlan = root.findViewById(R.id.btnStretchPlan);
 
-    // Workout Plan Button
-    binding.btnWorkoutPlan.setOnClickListener(v -> {
-      binding.spinnerBodyParts.setVisibility(View.VISIBLE);
-      binding.spinnerBodyParts.setOnItemSelectedListener(new SimpleItemSelectedListener(item -> {
-        showPopup("Workout Plan for " + item, "Here’s a great workout for your " + item.toLowerCase() + "!");
-      }));
+    btnWorkoutPlan.setOnClickListener(v -> {
+      Bundle bundle = new Bundle();
+      bundle.putString("type", "workout");
+      Navigation.findNavController(v).navigate(R.id.bodyPartSelectFragment, bundle);
     });
 
-    // Stretch Plan Button
-    binding.btnStretchPlan.setOnClickListener(v -> {
-      binding.spinnerBodyParts.setVisibility(View.VISIBLE);
-      binding.spinnerBodyParts.setOnItemSelectedListener(new SimpleItemSelectedListener(item -> {
-        showPopup("Stretch Plan for " + item, "Here’s a helpful stretch for your " + item.toLowerCase() + "!");
-      }));
+    btnStretchPlan.setOnClickListener(v -> {
+      Bundle bundle = new Bundle();
+      bundle.putString("type", "stretch");
+      Navigation.findNavController(v).navigate(R.id.bodyPartSelectFragment, bundle);
     });
 
     return root;
   }
 
-  private void showPopup(String title, String message) {
-    new AlertDialog.Builder(requireContext())
-      .setTitle(title)
-      .setMessage(message)
-      .setPositiveButton("OK", null)
-      .show();
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
+    // ✅ Setup the back arrow in the toolbar
+    AppCompatActivity activity = (AppCompatActivity) requireActivity();
+    if (activity.getSupportActionBar() != null) {
+      activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      activity.getSupportActionBar().setTitle("Choose a Plan");
+    }
+
+    // ✅ Tell Android that this fragment wants to handle menu clicks (like back arrow)
+    setHasOptionsMenu(true);
   }
 
   @Override
-  public void onDestroyView() {
-    super.onDestroyView();
-    binding = null;
-
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    if (item.getItemId() == android.R.id.home) {
+      // ✅ When back arrow is clicked, go back
+      Navigation.findNavController(requireView()).popBackStack();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
-
 }

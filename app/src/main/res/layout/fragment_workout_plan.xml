@@ -1,45 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
   android:layout_height="match_parent"
-    android:background="@color/background"
+  android:background="@color/background"
   android:orientation="vertical"
   android:padding="16dp">
 
+
+  <!-- ✅ TextView for Suggested Workout -->
+  <TextView
+    android:id="@+id/textWorkoutSuggestion"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Suggested Workout will appear here"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="16dp" />
+
   <!-- EditText for Workout Goal -->
   <EditText
-      android:id="@+id/editWorkoutGoal"
-      android:layout_width="wrap_content"
-      android:layout_height="62dp"
-      android:hint="Workout Goal (e.g., Lose Weight, Build Muscle)"
-      android:inputType="text" />
+    android:id="@+id/editWorkoutGoal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Workout Goal (e.g., Lose Weight, Build Muscle)"
+    android:inputType="text" />
 
   <!-- EditText for Target Muscle Group -->
   <EditText
-      android:id="@+id/editTargetMuscle"
-      android:layout_width="376dp"
-      android:layout_height="61dp"
-      android:hint="Target Muscle Group (e.g., Legs, Arms)"
-
-      android:inputType="text" />
-
+    android:id="@+id/editTargetMuscle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Target Muscle Group (e.g., Legs, Arms)"
+    android:inputType="text" />
 
   <!-- EditText for Time Frame -->
   <EditText
-      android:id="@+id/editTimeFrame"
-      android:layout_width="379dp"
-      android:layout_height="57dp"
-      android:hint="Time Frame (e.g., 30 days)"
-      android:inputType="text" />
+    android:id="@+id/editTimeFrame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Time Frame (e.g., 30 days)"
+    android:inputType="text" />
 
-  <!-- Button to Save the Workout Plan -->
+  <!-- Motivational Image -->
   <ImageView
       android:id="@+id/imageView2"
       android:layout_width="wrap_content"
       android:layout_height="400dp"
       app:srcCompat="@drawable/motivation" />
 
+  <!-- Save Button -->
   <Button
       android:id="@+id/btnSaveWorkoutPlan"
       android:layout_width="379dp"
@@ -51,5 +62,6 @@
       android:layout_width="379dp"
       android:layout_height="wrap_content"
       android:text="Cancel" />
+
 
 </LinearLayout>

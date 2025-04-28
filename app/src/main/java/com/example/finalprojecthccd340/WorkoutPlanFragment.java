@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -45,11 +43,7 @@ public class WorkoutPlanFragment extends Fragment {
 
     sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF_NAME, getContext().MODE_PRIVATE);
 
-    btnSaveWorkoutPlan.setOnClickListener(v -> {
-      saveWorkoutPlan(v);
-      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-      navController.popBackStack();
-    });
+    btnSaveWorkoutPlan.setOnClickListener(v -> saveWorkoutPlan(v));
 
     return rootView;
   }
@@ -64,7 +58,7 @@ public class WorkoutPlanFragment extends Fragment {
       return;
     }
 
-    Log.d(TAG, "Saving workout plan: Goal = " + goal + ", Target Muscle = " + targetMuscle + ", Time Frame = " + timeFrame);
+    Log.d(TAG, "Saving workout: Goal = " + goal + ", Target Muscle = " + targetMuscle + ", Time Frame = " + timeFrame);
 
     SharedPreferences.Editor editor = sharedPreferences.edit();
     editor.putString(GOAL, goal);

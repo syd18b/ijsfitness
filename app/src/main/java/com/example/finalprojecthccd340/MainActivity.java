@@ -1,8 +1,8 @@
 package com.example.finalprojecthccd340;
 
 import android.os.Bundle;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -25,10 +25,14 @@ public class MainActivity extends AppCompatActivity {
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
 
+    // ✅ NEW: Set the top toolbar as the ActionBar
+    MaterialToolbar toolbar = binding.topAppBar;
+    setSupportActionBar(toolbar);
+
     BottomNavigationView navView = binding.navView;
 
     NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-            .findFragmentById(R.id.nav_host_fragment);
+      .findFragmentById(R.id.nav_host_fragment);
     NavController navController = navHostFragment.getNavController();
 
     NavigationUI.setupWithNavController(navView, navController);

@@ -8,8 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -43,7 +46,11 @@ public class WorkoutPlanFragment extends Fragment {
 
     sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF_NAME, getContext().MODE_PRIVATE);
 
-    btnSaveWorkoutPlan.setOnClickListener(v -> saveWorkoutPlan(v));
+    btnSaveWorkoutPlan.setOnClickListener(v -> {
+      saveWorkoutPlan(v);
+      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+      navController.popBackStack();
+    });
 
     return rootView;
   }

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.finalprojecthccd340.R;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class SuggestedWorkoutFragment extends Fragment {
 
@@ -42,20 +43,14 @@ public class SuggestedWorkoutFragment extends Fragment {
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    // ✅ Set up ActionBar (Toolbar) to show back button
-    AppCompatActivity activity = (AppCompatActivity) requireActivity();
-    activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    setHasOptionsMenu(true); // Tell fragment you want to handle menu (including back arrow)
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-    // ✅ Handle toolbar back arrow click
-    if (item.getItemId() == android.R.id.home) {
-      Navigation.findNavController(requireView()).navigateUp();
-      return true;
+    // Set up MaterialToolbar to show the back button
+    MaterialToolbar toolbar = requireActivity().findViewById(R.id.topAppBar);
+    if (toolbar != null) {
+      toolbar.setNavigationIcon(android.R.drawable.ic_media_previous);  // Set back arrow icon
+      toolbar.setNavigationOnClickListener(v -> {
+        Navigation.findNavController(requireView()).navigateUp();  // Navigate back
+      });
     }
-    return super.onOptionsItemSelected(item);
   }
 
   // ✅ Detailed workout suggestions

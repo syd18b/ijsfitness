@@ -13,9 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalprojecthccd340.R;
+import com.google.android.material.appbar.MaterialToolbar;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,20 +61,13 @@ public class BodyPartSelectFragment extends Fragment implements OnBodyPartClickL
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    // ✅ Set up toolbar back button
-    AppCompatActivity activity = (AppCompatActivity) requireActivity();
-    activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    setHasOptionsMenu(true); // Allow this fragment to handle toolbar menu events
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-    // ✅ Handle toolbar back button click
-    if (item.getItemId() == android.R.id.home) {
-      Navigation.findNavController(requireView()).navigateUp();
-      return true;
+    MaterialToolbar toolbar = requireActivity().findViewById(R.id.topAppBar);
+    if (toolbar != null) {
+      toolbar.setNavigationIcon(android.R.drawable.ic_media_previous);
+      toolbar.setNavigationOnClickListener(v -> {
+        Navigation.findNavController(requireView()).navigateUp();
+      });
     }
-    return super.onOptionsItemSelected(item);
   }
 
   @Override

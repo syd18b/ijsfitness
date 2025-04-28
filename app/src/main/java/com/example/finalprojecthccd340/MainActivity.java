@@ -5,6 +5,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -25,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
 
-    // ✅ NEW: Set the top toolbar as the ActionBar
-    MaterialToolbar toolbar = binding.topAppBar;
+    Toolbar toolbar = findViewById(R.id.topAppBar);
     setSupportActionBar(toolbar);
 
     BottomNavigationView navView = binding.navView;

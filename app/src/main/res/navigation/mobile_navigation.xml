@@ -82,7 +82,6 @@
     android:label="Stretch Plan"
     tools:layout="@layout/fragment_stretch_plan" />
 
-  <!-- ✅ NEW: Suggested Workout Fragment -->
   <fragment
     android:id="@+id/suggestedWorkoutFragment"
     android:name="com.example.finalprojecthccd340.ui.dashboard.SuggestedWorkoutFragment"

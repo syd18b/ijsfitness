@@ -1,46 +1,77 @@
 package com.example.finalprojecthccd340;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Button;
+
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class WorkoutPlanFragment extends Fragment {
 
-  // Declare EditText variables
+  private static final String TAG = "WorkoutPlanFragment";
+
   private EditText editGoal, editTargetMuscle, editTimeFrame;
   private Button btnSaveWorkoutPlan;
+
+  public static final String SHARED_PREF_NAME = "USER_INFO";
+  public static final String GOAL = "GOAL";
+  public static final String TARGET_MUSCLE = "TARGET_MUSCLE";
+  public static final String TIME_FRAME = "TIME_FRAME";
+
+  private SharedPreferences sharedPreferences;
 
   public WorkoutPlanFragment() {
     // Required empty public constructor
   }
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-    // Inflate the fragment layout
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                           Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_workout_plan, container, false);
 
-    // Initialize the EditText views from the layout using findViewById
-    editGoal = rootView.findViewById(R.id.editWorkoutGoal); // Correct ID from XML
-    editTargetMuscle = rootView.findViewById(R.id.editTargetMuscle); // Correct ID from XML
-    editTimeFrame = rootView.findViewById(R.id.editTimeFrame); // Correct ID from XML
-    btnSaveWorkoutPlan = rootView.findViewById(R.id.btnSaveWorkoutPlan); // Correct ID from XML
+    editGoal = rootView.findViewById(R.id.editWorkoutGoal);
+    editTargetMuscle = rootView.findViewById(R.id.editTargetMuscle);
+    editTimeFrame = rootView.findViewById(R.id.editTimeFrame);
+    btnSaveWorkoutPlan = rootView.findViewById(R.id.btnSaveWorkoutPlan);
 
-    // Set up the button to save the workout plan
-    btnSaveWorkoutPlan.setOnClickListener(v -> saveWorkoutPlan());
+    sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF_NAME, getContext().MODE_PRIVATE);
+
+    btnSaveWorkoutPlan.setOnClickListener(v -> {
+      saveWorkoutPlan(v);
+      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+      navController.popBackStack();
+    });
 
     return rootView;
   }
 
-  private void saveWorkoutPlan() {
-    // Get the text from the EditText fields
-    String workoutGoal = editGoal.getText().toString();
-    String targetMuscle = editTargetMuscle.getText().toString();
-    String timeFrame = editTimeFrame.getText().toString();
+  private void saveWorkoutPlan(View view) {
+    String goal = editGoal.getText().toString().trim();
+    String targetMuscle = editTargetMuscle.getText().toString().trim();
+    String timeFrame = editTimeFrame.getText().toString().trim();
 
-    // You can now use the data (e.g., save it to a database, or display a message)
+    if (goal.isEmpty() || targetMuscle.isEmpty() || timeFrame.isEmpty()) {
+      Snackbar.make(view, "Please fill in all fields", Snackbar.LENGTH_LONG).show();
+      return;
+    }
+
+    Log.d(TAG, "Saving workout plan: Goal = " + goal + ", Target Muscle = " + targetMuscle + ", Time Frame = " + timeFrame);
+
+    SharedPreferences.Editor editor = sharedPreferences.edit();
+    editor.putString(GOAL, goal);
+    editor.putString(TARGET_MUSCLE, targetMuscle);
+    editor.putString(TIME_FRAME, timeFrame);
+    editor.apply();
+
+    Snackbar.make(view, "Workout Plan Saved!", Snackbar.LENGTH_LONG).show();
   }
 }

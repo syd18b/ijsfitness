@@ -35,6 +35,7 @@ public class ProfileFragment extends Fragment {
   private TextView profileName, profileEmail, profileAge, profileHeight, profileWeight;
   private Button editProfileButton;
 
+  private Button workoutPlanButton;
   private SharedPreferences prefs;
   private RecyclerView rvWorkoutHistory;
   private WorkoutAdapter workoutAdapter;
@@ -56,6 +57,7 @@ public class ProfileFragment extends Fragment {
     profileHeight = binding.profileHeight;
     profileWeight = binding.profileWeight;
     editProfileButton = binding.editProfile;
+    workoutPlanButton = binding.workoutPlan;
 
     // Load saved data or use defaults
     String firstName = prefs.getString("FIRST_NAME", "John");
@@ -87,6 +89,11 @@ public class ProfileFragment extends Fragment {
     editProfileButton.setOnClickListener(v -> {
       NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
       navController.navigate(R.id.navigation_edit_profile);
+    });
+
+    workoutPlanButton.setOnClickListener(v -> {
+      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+      navController.navigate(R.id.navigation_workout_plan);
     });
 
     // Initialize RecyclerView for workout history

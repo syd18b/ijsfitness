@@ -30,6 +30,12 @@
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
 
+    <fragment
+        android:id="@+id/navigation_workout_plan"
+        android:name="com.example.finalprojecthccd340.WorkoutPlanFragment"
+        android:label="Workout Plan"
+        tools:layout="@layout/fragment_workout_plan" />
+
   <fragment
     android:id="@+id/logProgressFragment"
     android:name="com.example.finalprojecthccd340.LogProgressFragment"

@@ -65,6 +65,13 @@
       android:layout_height="wrap_content"
       android:text="Edit Profile" />
 
+  <Button
+      android:id="@+id/workoutPlan"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Workout Plan" />
+
+
   <!-- Workout History RecyclerView -->
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rvWorkoutHistory"

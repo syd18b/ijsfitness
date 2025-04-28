@@ -36,13 +36,20 @@
   <!-- Button to Save the Workout Plan -->
   <ImageView
       android:id="@+id/imageView2"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:layout_height="400dp"
       app:srcCompat="@drawable/motivation" />
 
   <Button
-    android:id="@+id/btnSaveWorkoutPlan"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Save Workout Plan" />
+      android:id="@+id/btnSaveWorkoutPlan"
+      android:layout_width="379dp"
+      android:layout_height="wrap_content"
+      android:text="Save Workout Plan" />
+
+  <Button
+      android:id="@+id/button_cancel_workout_plan"
+      android:layout_width="379dp"
+      android:layout_height="wrap_content"
+      android:text="Cancel" />
+
 </LinearLayout>

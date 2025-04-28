@@ -27,7 +27,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button button2 = view.findViewById(R.id.button2);
         Button button5 = view.findViewById(R.id.button5);
         Button button6 = view.findViewById(R.id.button6);
 
@@ -40,7 +39,6 @@ public class HomeFragment extends Fragment {
             transaction.commit();
         };
 
-        button2.setOnClickListener(replaceWithDashboard);
         button5.setOnClickListener(replaceWithDashboard);
         button6.setOnClickListener(replaceWithDashboard);
     }

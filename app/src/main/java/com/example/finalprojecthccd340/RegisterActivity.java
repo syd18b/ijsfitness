@@ -17,6 +17,7 @@ import java.util.List;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -42,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     Button registerButton = findViewById(R.id.button_register);
     registerButton.setOnClickListener(this);
+
+    Toolbar toolbar = findViewById(R.id.topAppBar);
+    setSupportActionBar(toolbar);
 
     Button cancelButton = findViewById(R.id.button_cancel_registration);
     cancelButton.setOnClickListener(this);

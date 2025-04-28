@@ -5,10 +5,10 @@
   android:background="@color/background">
 
   <TextView
-    android:id="@+id/stretchSuggestionTextView"
+    android:id="@+id/suggestionTextView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Stretch suggestion will appear here."
+    android:text="Suggested workout will appear here."
     android:textSize="20sp"
     android:textStyle="bold"
     android:layout_gravity="center"

@@ -1,31 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/mobile_navigation"
+  app:startDestination="@+id/navigation_home">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.finalprojecthccd340.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+  <!-- Home Fragment -->
+  <fragment
+    android:id="@+id/navigation_home"
+    android:name="com.example.finalprojecthccd340.ui.home.HomeFragment"
+    android:label="@string/title_home"
+    tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.finalprojecthccd340.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+  <!-- Dashboard Fragment -->
+  <fragment
+    android:id="@+id/navigation_dashboard"
+    android:name="com.example.finalprojecthccd340.ui.dashboard.DashboardFragment"
+    android:label="@string/title_dashboard"
+    tools:layout="@layout/fragment_dashboard" />
 
-    <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.finalprojecthccd340.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+  <!-- Profile Fragment -->
+  <fragment
+    android:id="@+id/navigation_profile"
+    android:name="com.example.finalprojecthccd340.ui.profile.ProfileFragment"
+    android:label="@string/title_profile"
+    tools:layout="@layout/fragment_profile" />
+
+  <!-- Log Progress Fragment -->
   <fragment
     android:id="@+id/logProgressFragment"
     android:name="com.example.finalprojecthccd340.LogProgressFragment"
     android:label="Log Progress"
     tools:layout="@layout/fragment_log_progress" />
+
+  <!-- Body Part Select Fragment -->
+  <fragment
+    android:id="@+id/bodyPartSelectFragment"
+    android:name="com.example.finalprojecthccd340.ui.dashboard.BodyPartSelectFragment"
+    android:label="Select Body Part"
+    tools:layout="@layout/fragment_body_part_select">
+
+    <action
+      android:id="@+id/action_bodyPartSelect_to_suggestedWorkoutFragment"
+      app:destination="@id/suggestedWorkoutFragment" />
+
+    <action
+      android:id="@+id/action_bodyPartSelect_to_stretchPlanFragment"
+      app:destination="@id/stretchPlanFragment" />
+  </fragment>
+
+  <!-- Workout Plan Fragment (for user manual entry) -->
+  <fragment
+    android:id="@+id/workoutPlanFragment"
+    android:name="com.example.finalprojecthccd340.WorkoutPlanFragment"
+    android:label="Workout Plan"
+    tools:layout="@layout/fragment_workout_plan" />
+
+  <!-- Stretch Plan Fragment -->
+  <fragment
+    android:id="@+id/stretchPlanFragment"
+    android:name="com.example.finalprojecthccd340.ui.dashboard.StretchPlanFragment"
+    android:label="Stretch Plan"
+    tools:layout="@layout/fragment_stretch_plan" />
+
+  <!-- ✅ NEW: Suggested Workout Fragment -->
+  <fragment
+    android:id="@+id/suggestedWorkoutFragment"
+    android:name="com.example.finalprojecthccd340.ui.dashboard.SuggestedWorkoutFragment"
+    android:label="Suggested Workout"
+    tools:layout="@layout/fragment_suggested_workout" />
 
 </navigation>

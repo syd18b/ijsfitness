@@ -6,12 +6,6 @@
   android:id="@+id/mobile_navigation"
   app:startDestination="@+id/navigation_home">
 
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
 
 
   <!-- Home Fragment -->
@@ -25,7 +19,7 @@
   <fragment
     android:id="@+id/navigation_dashboard"
     android:name="com.example.finalprojecthccd340.ui.dashboard.DashboardFragment"
-    android:label="@string/title_dashboard"
+    android:label="Dashboard"
     tools:layout="@layout/fragment_dashboard" />
 
 
@@ -89,5 +83,9 @@
     android:name="com.example.finalprojecthccd340.ui.dashboard.SuggestedWorkoutFragment"
     android:label="Suggested Workout"
     tools:layout="@layout/fragment_suggested_workout" />
-
+  <fragment
+    android:id="@+id/newWorkoutChoiceFragment"
+    android:name="com.example.finalprojecthccd340.ui.home.NewWorkoutChoiceFragment"
+    android:label="New Workout Choice"
+    tools:layout="@layout/fragment_new_workout_choice" />
 </navigation>

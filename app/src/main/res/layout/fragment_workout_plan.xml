@@ -8,17 +8,6 @@
   android:padding="16dp">
 
 
-  <!-- ✅ TextView for Suggested Workout -->
-  <TextView
-    android:id="@+id/textWorkoutSuggestion"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Suggested Workout will appear here"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="16dp" />
-
   <!-- EditText for Workout Goal -->
   <EditText
     android:id="@+id/editWorkoutGoal"

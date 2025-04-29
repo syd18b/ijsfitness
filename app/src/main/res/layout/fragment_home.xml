@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:visibility="visible"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.HomeFragment"
+    tools:layout_editor_absoluteX="-29dp"
+    tools:layout_editor_absoluteY="5dp">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -133,7 +135,7 @@
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group2"
@@ -141,17 +143,54 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="textView6,textView4,imageView7,textView7,textView8,textView9,textView5,imageView6,imageView5" />
 
-    <ImageView
-        android:id="@+id/imageView14"
-        android:layout_width="173dp"
-        android:layout_height="152dp"
-        android:src="@drawable/screenshot_2025_04_22_at_3_11_51pm"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/muscleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Target Muscle:"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/timeFrameTextView"
+        app:layout_constraintStart_toStartOf="@+id/goalTextView"
+        app:layout_constraintTop_toBottomOf="@+id/goalTextView" />
+
+    <TextView
+        android:id="@+id/goalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Goal:"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/timeFrameTextView"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/currentWorkoutPlan"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/currentWorkoutPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:text="Workout Plan"
+        android:textColor="#090909"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/goalTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.674"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/timeFrameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Time Frame:"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintStart_toStartOf="@+id/muscleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/muscleTextView" />
 
     <Button
         android:id="@+id/button5"
@@ -166,21 +205,6 @@
         app:layout_constraintVertical_bias="0.66" />
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="353dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="“When I feel tired, I just think about how great I will feel once I finally reach my goal.” \n– Michael Phelps"
-        android:textAlignment="center"
-        android:textColor="#82C5D1"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -190,10 +214,25 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.198" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="353dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:text="“When I feel tired, I just think about how great I will feel once I finally reach my goal.” \n– Michael Phelps"
+        android:textAlignment="center"
+        android:textColor="#82C5D1"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <Button
         android:id="@+id/button6"
@@ -209,12 +248,12 @@
 
     <ImageView
         android:id="@+id/imageView17"
-        android:layout_width="218dp"
+        android:layout_width="143dp"
         android:layout_height="133dp"
         android:src="@drawable/quote"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintHorizontal_bias="0.835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.944" />
@@ -289,5 +328,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.926" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="136dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/screenshot_2025_04_22_at_3_11_51pm"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

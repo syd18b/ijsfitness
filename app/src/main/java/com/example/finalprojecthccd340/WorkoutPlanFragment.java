@@ -22,6 +22,7 @@ public class WorkoutPlanFragment extends Fragment {
 
   private EditText editGoal, editTargetMuscle, editTimeFrame;
   private Button btnSaveWorkoutPlan;
+  private Button btnCancel;
 
   public static final String SHARED_PREF_NAME = "USER_INFO";
   public static final String GOAL = "GOAL";
@@ -43,11 +44,17 @@ public class WorkoutPlanFragment extends Fragment {
     editTargetMuscle = rootView.findViewById(R.id.editTargetMuscle);
     editTimeFrame = rootView.findViewById(R.id.editTimeFrame);
     btnSaveWorkoutPlan = rootView.findViewById(R.id.btnSaveWorkoutPlan);
+    btnCancel = rootView.findViewById(R.id.button_cancel_workout_plan);
 
     sharedPreferences = requireActivity().getSharedPreferences(SHARED_PREF_NAME, getContext().MODE_PRIVATE);
 
     btnSaveWorkoutPlan.setOnClickListener(v -> {
       saveWorkoutPlan(v);
+      NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+      navController.popBackStack();
+    });
+
+    btnCancel.setOnClickListener(v -> {
       NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
       navController.popBackStack();
     });
